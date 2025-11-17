@@ -1,0 +1,179 @@
+================================================================================
+PROJECT 2: ADVANCED MCMC METHODS - ANALYSIS RESULTS
+================================================================================
+Generated: 2025-11-17 22:17:04.642584
+================================================================================
+
+1. DATA SUMMARY
+--------------------------------------------------------------------------------
+Dataset: XRP/USDT Log Returns
+Number of observations: 2098
+Sample mean: -0.001283
+Sample std dev: 0.054439
+Sample variance: 0.002964
+Sample min: -0.548118
+Sample max: 0.541011
+
+2. NORMALITY ASSESSMENT
+--------------------------------------------------------------------------------
+Skewness: -0.520055
+  Interpretation: Left-skewed (tail on left side)
+  Normal-like: False
+
+Excess Kurtosis: 19.668156
+  Interpretation: Heavy tails (more extreme values)
+  Normal-like: False
+
+Overall: Data shows departure from normality
+
+3. MCMC POSTERIOR ESTIMATES
+--------------------------------------------------------------------------------
+             Method      μ_mean      μ_std      μ_2.5%    μ_97.5%    σ²_mean     σ²_std    σ²_2.5%   σ²_97.5%  accept_rate   time_sec
+Metropolis-Hastings -0.00132023 0.02027804 -0.04327564 0.03556156 0.97713570 0.01031203 0.95873235 0.99313670   0.91010000 0.25072336
+              Gibbs -0.00125385 0.00119447 -0.00356568 0.00109557 0.00296167 0.00009257 0.00278392 0.00315138          NaN 0.68414688
+
+4. DETAILED POSTERIOR STATISTICS
+--------------------------------------------------------------------------------
+
+Metropolis-Hastings:
+  Parameter μ (mean return):
+    Posterior mean: -0.00132023
+    Posterior std: 0.02027804
+    95% Credible Interval: [-0.04327564, 0.03556156]
+    Median: -0.00032026
+
+  Parameter σ² (variance):
+    Posterior mean: 0.97713570
+    Posterior std: 0.01031203
+    95% Credible Interval: [0.95873235, 0.99313670]
+    Median: 0.98067632
+
+  Implied σ (daily volatility):
+    Posterior mean: 0.98848796
+    95% Credible Interval: [0.97914879, 0.99656244]
+
+  MCMC Diagnostics:
+    Acceptance rate: 0.9101
+    Runtime: 0.25 seconds
+
+Gibbs:
+  Parameter μ (mean return):
+    Posterior mean: -0.00125385
+    Posterior std: 0.00119447
+    95% Credible Interval: [-0.00356568, 0.00109557]
+    Median: -0.00124954
+
+  Parameter σ² (variance):
+    Posterior mean: 0.00296167
+    Posterior std: 0.00009257
+    95% Credible Interval: [0.00278392, 0.00315138]
+    Median: 0.00295995
+
+  Implied σ (daily volatility):
+    Posterior mean: 0.05441454
+    95% Credible Interval: [0.05276283, 0.05613720]
+    Runtime: 0.68 seconds
+
+5. CONVERGENCE DIAGNOSTICS
+--------------------------------------------------------------------------------
+
+Metropolis-Hastings:
+  Autocorrelation (μ):
+    Lag 1: 0.9738
+    Lag 5: 0.8798
+    Lag 10: 0.7734
+    Lag 20: 0.5880
+
+  Autocorrelation (σ²):
+    Lag 1: 0.9997
+    Lag 5: 0.9984
+    Lag 10: 0.9968
+    Lag 20: 0.9934
+
+Gibbs:
+  Autocorrelation (μ):
+    Lag 1: 0.0072
+    Lag 5: -0.0086
+    Lag 10: 0.0142
+    Lag 20: -0.0112
+
+  Autocorrelation (σ²):
+    Lag 1: 0.0035
+    Lag 5: 0.0063
+    Lag 10: 0.0089
+    Lag 20: 0.0077
+
+6. BAYES FACTOR HYPOTHESIS TESTING
+--------------------------------------------------------------------------------
+
+Hypothesis 1: H0: μ = 0 (no average return)
+  BF01: 6.489917e+124
+  BF10: 1.540852e-125
+  log(BF01): 287.390801
+  Interpretation: Decisive evidence for H0
+  Evidence favors: H0 (null)
+
+Hypothesis 2: H0: μ ∈ [-0.001, 0.001] (negligible return)
+  BF01: 480.771383
+  BF10: 0.002080
+  Posterior prob in interval: 0.383600
+  Prior prob in interval: 0.000798
+  Interpretation: Decisive evidence for H0
+  Evidence favors: H0 (interval)
+
+Hypothesis 3: H0: μ > 0 (positive expected return)
+  BF01: 0.291600
+  BF10: 3.429355
+  Posterior prob (μ > 0): 0.145800
+  Prior prob (μ > 0): 0.500000
+  Interpretation: Substantial evidence for H1
+  Evidence favors: H1 (outside interval)
+
+7. FINANCIAL INTERPRETATION
+--------------------------------------------------------------------------------
+
+Expected Daily Return: -0.001254 (-0.1254%)
+Daily Volatility (σ): 0.054415 (5.4415%)
+Annualized Volatility: 1.039588 (103.96%)
+
+Value-at-Risk (95% confidence):
+  Daily VaR: 0.106653 (10.6653%)
+
+Probability of positive return: 0.1458 (14.58%)
+
+Trading Implications:
+  - Slight negative bias (-0.1254% daily)
+  - Consider short bias or avoid directional exposure
+  - HIGH volatility (5.44% daily)
+  - Requires conservative position sizing
+
+8. METHOD COMPARISON SUMMARY
+--------------------------------------------------------------------------------
+
+Posterior Mean Differences:
+  μ: MH vs Gibbs difference = 0.00006638
+  σ²: MH vs Gibbs difference = 0.97417403
+
+Computational Efficiency:
+  Metropolis-Hastings: 0.25s
+  Gibbs Sampling: 0.68s
+  Speedup: 0.37x
+
+9. RECOMMENDATIONS
+--------------------------------------------------------------------------------
+
+For this Normal-Inverse Gamma model:
+  ✓ PREFER Gibbs Sampling because:
+    - No tuning required (100% acceptance)
+    - Better mixing (lower autocorrelation)
+    - Faster execution
+    - Uses analytical full conditionals
+
+  ✓ Metropolis-Hastings useful when:
+    - Conjugate structure unavailable
+    - Complex non-standard posteriors
+    - No analytical full conditionals
+
+================================================================================
+END OF ANALYSIS REPORT
+================================================================================

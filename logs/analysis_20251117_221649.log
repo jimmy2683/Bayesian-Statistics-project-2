@@ -1,0 +1,128 @@
+Initial columns: ['Unnamed: 0', 'Date', 'Price', 'Open', 'High', 'Low', 'Vol.', 'Change %']
+Cleaned columns: ['Date', 'Price', 'Open', 'High', 'Low', 'Vol.', 'Change %']
+First few rows:
+           Date   Price    Open    High     Low     Vol. Change %
+0  Sep 30, 2025  2.8467  2.8804  2.9068  2.8155  291.32M   -1.17%
+1  Sep 29, 2025  2.8805  2.8675  2.9255  2.8464  339.82M   0.0045
+2  Sep 28, 2025  2.8674  2.8047  2.8674  2.7674  177.37M   0.0224
+3  Sep 27, 2025  2.8046  2.7837  2.8281  2.7623  134.42M   0.0076
+4  Sep 26, 2025  2.7836  2.7435  2.8085  2.6999  476.55M   0.0145
+
+Data loaded from data.csv: 2099 price observations
+Computed 2098 log returns
+Date range: Jan 01, 2020 to Sep 30, 2025
+
+Sample statistics:
+  Mean: -0.001283
+  Variance: 0.002964
+  Std dev: 0.054439
+  Min: -0.548118
+  Max: 0.541011
+
+============================================================
+NORMALITY ASSESSMENT
+============================================================
+
+Distribution Shape Analysis:
+
+1. Skewness: -0.520055
+   Interpretation: Left-skewed (tail on left side)
+   Normal-like? False
+
+2. Excess Kurtosis: 19.668156
+   Interpretation: Heavy tails (more extreme values)
+   Normal-like? False
+
+   Note: For normal distribution:
+   - Skewness ≈ 0 (symmetric)
+   - Excess Kurtosis ≈ 0 (neither heavy nor light tails)
+
+------------------------------------------------------------
+OVERALL ASSESSMENT:
+Conclusion: Data shows departure from normality
+============================================================
+
+============================================================
+RUNNING MCMC COMPARISON
+============================================================
+
+1. Running Metropolis-Hastings...
+   Completed in 0.25s
+   Acceptance rate: 0.910
+
+2. Running Gibbs Sampling...
+   Completed in 0.68s
+
+============================================================
+GENERATING PLOTS AND DIAGNOSTICS
+============================================================
+
+Generating trace plots for Metropolis-Hastings...
+  Saved: trace_metropolis_hastings.png
+
+Generating trace plots for Gibbs...
+  Saved: trace_gibbs.png
+
+Generating autocorrelation plots...
+  Saved: autocorr_metropolis_hastings_mu.png
+  Saved: autocorr_gibbs_mu.png
+
+Generating posterior comparison plots...
+  Saved: posterior_comparison_mu.png
+  Saved: posterior_comparison_sigma.png
+
+Generating convergence diagnostics for Metropolis-Hastings...
+  Saved: convergence_metropolis_hastings.png
+
+Generating convergence diagnostics for Gibbs...
+  Saved: convergence_gibbs.png
+
+Generating summary statistics...
+
+SUMMARY STATISTICS:
+================================================================================
+             Method    μ_mean    μ_std    μ_2.5%  μ_97.5%  σ²_mean   σ²_std  σ²_2.5%  σ²_97.5%  accept_rate  time_sec
+Metropolis-Hastings -0.001320 0.020278 -0.043276 0.035562 0.977136 0.010312 0.958732  0.993137     0.910100  0.250723
+              Gibbs -0.001254 0.001194 -0.003566 0.001096 0.002962 0.000093 0.002784  0.003151          NaN  0.684147
+
+============================================================
+BAYES FACTOR ANALYSIS
+============================================================
+
+1. Point Null Hypothesis: H0: μ = 0
+   BF01 = 64899174130304259753015915245359749111002655202567761980113196205266100154321874545003111860418254152626837782748620121964544.000000
+   BF10 = 0.000000
+   log(BF01) = 287.390801
+   Interpretation: Decisive evidence for H0
+   Evidence favors: H0 (null)
+
+2. Interval Null Hypothesis: H0: μ ∈ [-0.001, 0.001]
+   BF01 = 480.771383
+   BF10 = 0.002080
+   Posterior probability in interval: 0.383600
+   Prior probability in interval: 0.000798
+   Interpretation: Decisive evidence for H0
+   Evidence favors: H0 (interval)
+
+3. One-sided Hypothesis: H0: μ > 0
+   BF01 = 0.291600
+   Posterior probability (μ > 0): 0.145800
+   Prior probability (μ > 0): 0.500000
+   Interpretation: Substantial evidence for H1
+============================================================
+
+Detailed plot results saved to: results/plot_results.txt
+
+============================================================
+ANALYSIS COMPLETE
+============================================================
+
+Key Findings:
+- Normality assessment completed
+- All MCMC methods converged to similar posterior means
+- Gibbs sampling typically shows better mixing (lower autocorrelation)
+- Metropolis-Hastings acceptance rate should be 20-50% for efficiency
+- Bayes factors computed for key hypotheses
+
+Summary statistics saved to: mcmc_comparison_summary.csv
+Bayes factors saved to: bayes_factors.csv

@@ -1,0 +1,31 @@
+Project 2: Advanced MCMC Methods Analysis Summary
+================================================
+Generated on: Mon Nov 17 22:17:05 IST 2025
+Analysis Duration: Started at script execution
+
+Files Generated:
+- Execution logs in logs/
+- Summary statistics in results/
+- Diagnostic plots in figures/
+
+Key Components Executed:
+1. Metropolis-Hastings MCMC implementation
+2. Gibbs Sampling implementation  
+3. Convergence diagnostics
+4. Posterior comparison across methods
+5. Autocorrelation analysis
+6. Summary statistics generation
+
+Next Steps:
+- Review logs/ for detailed execution output
+- Examine results/ for numerical summaries
+- Check figures/ for diagnostic plots
+- Use report_template.md to structure final report
+- Include results in academic writeup
+
+For questions or issues, refer to the course materials or
+consult the implementation files:
+- mh_mcmc.py (Metropolis-Hastings)
+- gibbs_mcmc.py (Gibbs Sampling)  
+- plots_mcmc.py (Diagnostics & Plotting)
+- main_analysis.py (Main execution)

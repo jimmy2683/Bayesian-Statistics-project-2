@@ -1,0 +1,4 @@
+Hypothesis,BF01,Interpretation
+H0: μ = 0.0,6.489917413030426e+124,Decisive evidence for H0
+"H0: μ ∈ [-0.0010, 0.0010]",480.77138320280375,Decisive evidence for H0
+"H0: μ ∈ [0.0000, inf]",0.2916,Substantial evidence for H1
